@@ -1,0 +1,35 @@
+package com.ibm.model;
+
+public class ErrorItem {
+	private String code;
+	private String message;
+	private String error;
+	public ErrorItem() {}
+	
+	public ErrorItem(String code, String message, String error) {
+	
+		this.code = code;
+		this.message = message;
+		this.error = error;
+	}
+	public String getCode() {
+		return code;
+	}
+	public void setCode(String code) {
+		this.code = code;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMsg(String message) {
+		this.message = message;
+	}
+	public String getError() {
+		return error;
+	}
+	public void setError(String error) {
+		this.error = error;
+	}
+	
+
+}

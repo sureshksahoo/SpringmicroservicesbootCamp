@@ -1,0 +1,9 @@
+package com.ibm.dao;
+
+import org.springframework.stereotype.Repository;
+
+import com.ibm.model.User;
+@Repository
+public class UserRepository extends JpaRepository<User,userId>{
+
+}

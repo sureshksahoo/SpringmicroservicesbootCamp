@@ -1,0 +1,47 @@
+logging: 
+      level: 
+       org:
+        springframework: 
+             web: trace
+             
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+        
+server:
+  port: 9192
+
+spring:
+  application:
+       name: GroceryStore_ProductService
+  datasource:
+     driverClassName: org.h2.Driver
+     url: jdbc:h2:mem:orderdb
+     username: sa
+  h2:
+    console:
+      enabled: true
+  jpa:
+     datasource-platform: org.hibernate.dialect.H2Dialect
+     hibernate:
+        ddl-auto: create
+     show-sql: true
+     
+message: dev
+    
+---
+spring:
+  profiles: dev   
+message: dev profile
+
+---
+spring:
+   profiles: prod
+   
+message: prod profile
+  
+        
+       
+        

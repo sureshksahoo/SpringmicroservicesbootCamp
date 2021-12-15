@@ -1,0 +1,40 @@
+package com.ibm;
+
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import javax.annotation.PostConstruct;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+import com.ibm.model.Product;
+import com.ibm.model.User;
+import com.ibm.service.ProductService;
+
+@SpringBootApplication
+public class GroceryStoreProductApplication {
+	   @Autowired
+	   private ProductService productService;
+
+	public static void main(String[] args) {
+		SpringApplication.run(GroceryStoreProductApplication.class, args);
+	}
+
+	 @PostConstruct
+	    public void initUsers() {
+	        List<Product> products = Stream.of(
+	                new Product(112345678, "rice", 50.00, "rice,jpg"),
+	                new Product(2, "dal", 130.00, "dal.jpg"),
+	                new Product(3, "oil", 200.00, "refineoil.jpg"),
+	                new Product(4, "toothpaste", 100.00, "closeup"),
+	                new Product(5, "Biscuit", 50.00, "Britania")
+	        ).collect(Collectors.toList());
+	
+
+}
+}

@@ -1,0 +1,5 @@
+package com.ibm.Exception;
+
+public class UserNotFoundException {
+
+}

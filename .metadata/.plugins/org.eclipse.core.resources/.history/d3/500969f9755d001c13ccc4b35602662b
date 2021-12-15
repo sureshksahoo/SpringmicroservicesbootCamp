@@ -1,0 +1,4 @@
+FROM adoptopenjdk:11-jre-hotspot-bionic
+ADD target/CustomerAuthenticator-0.0.1-SNAPSHOT.jar customerauthenticator.jar
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","customerauthenticator.jar"]

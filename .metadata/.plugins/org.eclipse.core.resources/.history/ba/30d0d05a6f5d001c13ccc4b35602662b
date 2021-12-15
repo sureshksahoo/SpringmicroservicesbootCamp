@@ -1,0 +1,43 @@
+package com.ibm.controller;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ibm.dao.OrderRepository;
+import com.ibm.exception.ResourceNotFoundException;
+import com.ibm.model.Order;
+import com.ibm.util.JwtUtil;
+
+@RestController
+public class OrderController {
+	@Autowired
+	private OrderRepository orderRepository;
+	@Autowired
+	private JwtUtil jwtUtil;
+
+	@PostMapping("/api/orders")
+	public Order createOrder(@RequestBody Order order) {
+		if(order.getUserToken()!=null&&!jwtUtil.isTokenExpired(order.getUserToken()){
+		  return orderRepository.save(order);
+		}
+		else {
+			throw new ResourceNotFoundException();
+		}
+	}
+
+	@GetMapping("/api/orders/{id}")
+	public Optional<Order> findOrderById(@PathVariable Long id,
+			@RequestHeader(value = "username", required = true) String username,
+			@RequestHeader(value = "Authorization") String jwt) {
+		 String token = jwt.substring(jwt.lastIndexOf("Bearer ")+7);
+		return orderRepository.findById(id);
+	}
+
+}

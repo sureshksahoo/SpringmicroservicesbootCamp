@@ -1,0 +1,4 @@
+FROM adoptopenjdk:11-jre-hotspot-bionic
+ADD target/GroceryStore_OrderService-0.0.1-SNAPSHOT.jar GroceryStore_OrderService-0.0.1-SNAPSHOT.jar
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","GroceryStore_OrderService-0.0.1-SNAPSHOT.jar"]

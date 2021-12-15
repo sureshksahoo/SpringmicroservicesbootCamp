@@ -1,0 +1,22 @@
+package com.ibm;
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class CustomerAuthenticatorApplication implements CommandLineRunner {
+
+	public static void main(String[] args) {
+		SpringApplication.run(CustomerAuthenticatorApplication.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+		
+		
+	}
+	
+	
+
+}

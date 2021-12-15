@@ -1,0 +1,32 @@
+package com.ibm;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.ibm.model.User;
+import com.ibm.service.UserService;
+
+@SpringBootApplication
+public class CustomerAuthenticatorApplication implements CommandLineRunner {
+	@Autowired
+	UserService service;
+
+	public static void main(String[] args) {
+		SpringApplication.run(CustomerAuthenticatorApplication.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+		
+		User user=new User();
+		user.setUserName("suresh");
+		user.setPassword("Passa@1234");
+		user.setRole("user");
+		service.saveUser(user);
+	}
+	
+	
+
+}

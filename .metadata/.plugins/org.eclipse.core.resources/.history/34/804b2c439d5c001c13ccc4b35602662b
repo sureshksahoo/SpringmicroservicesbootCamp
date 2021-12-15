@@ -1,0 +1,12 @@
+package com.ibm.model;
+
+public class Snippet {
+	public static void main(String[] args) {
+		<dependency>
+					<groupId>io.jsonwebtoken</groupId>
+					<artifactId>jjwt</artifactId>
+					<version>0.9.1</version>
+				</dependency>
+	}
+}
+
